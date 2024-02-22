@@ -1,6 +1,9 @@
 <template>
 
-  <div class="readme">
+  <div 
+    class="readme"
+    :class="{ inFocus: state.focus === 'about' }"
+  >
     <div class="nav">
       <p class="nav-item">
         <User />
@@ -37,6 +40,27 @@
 </template>
 
 <style scoped>
+
+  .inFocus {
+    box-shadow: 0 0 0 0 rgb(54, 127, 204);
+    animation: pulse 2s infinite;
+  }
+
+
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgb(54, 127, 204);
+	}
+	
+	70% {
+		box-shadow: 0 0 0 10px rgba(51, 217, 178, 0);
+	}
+	
+	100% {
+		box-shadow: 0 0 0 0 rgba(51, 217, 178, 0);
+	}
+}
+
   .readme {
     @apply flex flex-col w-full border border-ct-default-border rounded-md
   }
@@ -86,5 +110,7 @@
 
 <script setup>
  import { User } from 'lucide-vue-next'
+  const { state } = useFocus()
+  console.log(state)
 
 </script>

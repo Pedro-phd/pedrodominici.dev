@@ -32,7 +32,6 @@
   import { GripVertical } from 'lucide-vue-next'
 
   interface IProps {
-    icon: Element
     title: string
   }
 

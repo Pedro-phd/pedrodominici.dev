@@ -7,4 +7,5 @@ export default defineNuxtConfig({
       Inter: [400, 500, 600],
     },
   },
+  css: ['animate.css/animate.min.css']
 })

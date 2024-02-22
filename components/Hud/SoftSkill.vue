@@ -1,8 +1,10 @@
 <template>
-  <WidgetContainer title="Soft skill's" class="min-w-[600px] w-full">
-    <div class="flex gap-2 h-full">
-      <div class="flex flex-col gap-2 w-1/2 ">
-        <SoftSkillsItem title="Team Work" :icon="Users">
+  <WidgetContainer title="Soft skill's" class="lg:min-w-[600px] w-full"
+  :class="{ inFocus: state.focus === 'skill' }"
+  >
+    <div class="flex gap-2 h-full flex-col lg:flex-row">
+      <div class="flex flex-col gap-2 w-full lg:w-1/2 ">
+        <SoftSkillsItem title="Team Work">
           <template v-slot:icon>
             <Users  class="text-ct-icon size-4"/>
           </template>
@@ -23,7 +25,7 @@
           </template>
         </SoftSkillsItem>
       </div>
-      <div class="flex flex-col gap-2 w-1/2">
+      <div class="flex flex-col gap-2 w-full lg:w-1/2">
         <SoftSkillsItem title="Continuous Learning" :icon="Users">
           <template v-slot:icon>
             <Lightbulb  class="text-ct-icon size-4"/>
@@ -51,6 +53,30 @@
 
 <script setup lang="ts">
   import { Users, Repeat2, Lightbulb, Dumbbell } from 'lucide-vue-next'
+  const { state} = useFocus()
 
 
 </script>
+
+<style scoped>
+
+.inFocus {
+  box-shadow: 0 0 0 0 rgba(51, 217, 178, 0.7);
+  animation: pulse 2s infinite;
+}
+
+
+@keyframes pulse {
+  0% {
+  box-shadow: 0 0 0 0 rgba(51, 217, 178, 0.7);
+}
+
+70% {
+  box-shadow: 0 0 0 10px rgba(51, 217, 178, 0);
+}
+
+100% {
+  box-shadow: 0 0 0 0 rgba(51, 217, 178, 0);
+}
+}
+</style>
